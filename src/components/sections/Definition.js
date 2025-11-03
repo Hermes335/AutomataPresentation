@@ -1,0 +1,122 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { BookOpen, Cpu, FileText, GitBranch } from 'lucide-react';
+
+const Definition = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  return (
+    <div ref={ref} className="min-h-screen flex items-center justify-center px-4 py-20 relative">
+      {/* Section gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-500/5 to-transparent" />
+      
+      <div className="max-w-6xl mx-auto relative z-10">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          {/* Title */}
+          <motion.h2
+            variants={itemVariants}
+            className="text-5xl md:text-6xl font-bold text-center mb-12 gradient-text"
+          >
+            What is Context-Free Grammar?
+          </motion.h2>
+
+          {/* Introduction */}
+          <motion.div
+            variants={itemVariants}
+            className="glass-dark rounded-2xl shadow-glow p-8 md:p-10 mb-8 hover-glow"
+          >
+            <div className="flex items-start space-x-4 mb-6">
+              <BookOpen className="text-accent-400 flex-shrink-0 mt-1" size={32} />
+              <div>
+                <h3 className="text-2xl font-semibold text-text-primary mb-4">Definition</h3>
+                <p className="text-lg text-text-secondary leading-relaxed">
+                  A <strong className="text-accent-400">Context-Free Grammar (CFG)</strong> is a formal grammar used in automata theory 
+                  and computer science to generate all possible strings in a context-free language. It consists 
+                  of production rules that describe how to form strings from the language's alphabet by 
+                  recursively replacing variables.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Formal Definition */}
+          <motion.div
+            variants={itemVariants}
+            className="relative rounded-2xl shadow-glow-lg p-8 md:p-10 mb-8 overflow-hidden"
+            style={{
+              background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(34, 211, 238, 0.1))',
+              border: '1px solid rgba(99, 102, 241, 0.3)',
+            }}
+          >
+            <h3 className="text-2xl font-semibold mb-6 flex items-center text-text-primary">
+              <FileText className="mr-3 text-accent-400" size={28} />
+              Formal Definition
+            </h3>
+            <div className="glass rounded-xl p-6 font-mono text-lg border-glow">
+              <p className="mb-4 text-center text-2xl text-accent-400">CFG = (V, Σ, R, S)</p>
+              <div className="space-y-3 text-base text-text-secondary">
+                <p><strong className="text-primary-400">V</strong> = Finite set of <em className="text-accent-400">variables</em> (non-terminals)</p>
+                <p><strong className="text-primary-400">Σ</strong> = Finite set of <em className="text-accent-400">terminals</em> (alphabet)</p>
+                <p><strong className="text-primary-400">R</strong> = Finite set of <em className="text-accent-400">production rules</em></p>
+                <p><strong className="text-primary-400">S</strong> = <em className="text-accent-400">Start symbol</em> (S ∈ V)</p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Importance */}
+          <motion.div variants={itemVariants}>
+            <div className="grid md:grid-cols-2 gap-6">
+              <motion.div 
+                className="glass-dark rounded-xl shadow-lg p-6 hover-glow transition-all duration-300"
+                whileHover={{ scale: 1.02 }}
+              >
+                <Cpu className="text-primary-400 mb-4" size={28} />
+                <h4 className="text-xl font-semibold text-text-primary mb-3">Language Generation</h4>
+                <p className="text-text-secondary">
+                  CFGs provide a systematic way to generate all valid strings in a language, 
+                  making them essential for defining programming language syntax.
+                </p>
+              </motion.div>
+              
+              <motion.div 
+                className="glass-dark rounded-xl shadow-lg p-6 hover-glow transition-all duration-300"
+                whileHover={{ scale: 1.02 }}
+              >
+                <GitBranch className="text-primary-400 mb-4" size={28} />
+                <h4 className="text-xl font-semibold text-text-primary mb-3">Recursive Structure</h4>
+                <p className="text-text-secondary">
+                  They capture the hierarchical and recursive nature of natural and programming 
+                  languages through production rules and derivations.
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+export default Definition;
