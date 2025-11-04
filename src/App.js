@@ -9,7 +9,6 @@ import ParseTree from './components/sections/ParseTree';
 import Applications from './components/sections/Applications';
 import Comparison from './components/sections/Comparison';
 import Conclusion from './components/sections/Conclusion';
-import References from './components/sections/References';
 
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -33,7 +32,6 @@ function App() {
     { id: 'comparison', label: 'Comparison', component: Comparison },
     { id: 'applications', label: 'Applications', component: Applications },
     { id: 'conclusion', label: 'Conclusion', component: Conclusion },
-    { id: 'references', label: 'References', component: References },
   ];
 
   return (
