@@ -12,7 +12,7 @@ const Applications = () => {
     {
       icon: Code,
       title: 'Compiler Design',
-      description: 'CFGs are fundamental in syntax analysis and parsing phases of compilers. They define the syntactic structure of programming languages.',
+      description: 'CFGs define programming language syntax, while CFLs represent the set of all valid programs. Compilers use these to parse and validate source code.',
       examples: ['Lexical analysis', 'Syntax parsing', 'Abstract Syntax Trees (AST)', 'Error detection'],
       color: 'from-orange-500 to-red-500',
       bgColor: 'from-orange-50 to-red-50'
@@ -20,7 +20,7 @@ const Applications = () => {
     {
       icon: MessageSquare,
       title: 'Natural Language Processing',
-      description: 'CFGs model the grammatical structure of natural languages, enabling computers to understand and generate human language.',
+      description: 'CFGs model grammatical structure, generating CFLs that represent all grammatically correct sentences in a natural language subset.',
       examples: ['Sentence parsing', 'Grammar checking', 'Machine translation', 'Speech recognition'],
       color: 'from-blue-500 to-cyan-500',
       bgColor: 'from-blue-50 to-cyan-50'
@@ -28,7 +28,7 @@ const Applications = () => {
     {
       icon: Braces,
       title: 'Programming Language Design',
-      description: 'Language designers use CFGs to formally specify the syntax of new programming languages, ensuring consistency and clarity.',
+      description: 'Language designers use CFGs to specify syntax rules, which define the CFL of all syntactically valid programs in that language.',
       examples: ['BNF notation', 'Language specifications', 'IDE development', 'Syntax highlighting'],
       color: 'from-purple-500 to-pink-500',
       bgColor: 'from-purple-50 to-pink-50'
@@ -36,7 +36,7 @@ const Applications = () => {
     {
       icon: Zap,
       title: 'XML/HTML Parsing',
-      description: 'CFGs are used to parse and validate structured documents, ensuring they conform to specified formats and schemas.',
+      description: 'CFGs define document structure rules, and valid XML/HTML documents form a CFL that can be parsed and validated efficiently.',
       examples: ['Document validation', 'Web scraping', 'Data extraction', 'Format conversion'],
       color: 'from-green-500 to-teal-500',
       bgColor: 'from-green-50 to-teal-50'
@@ -56,11 +56,11 @@ const Applications = () => {
         >
           {/* Title */}
           <h2 className="text-5xl md:text-6xl font-bold text-center mb-6 gradient-text">
-            Applications of CFG
+            Real-World Applications
           </h2>
           <p className="text-center text-xl text-text-secondary mb-12 max-w-3xl mx-auto">
-            Context-Free Grammars are crucial in various domains of computer science, 
-            from compiler construction to natural language processing.
+            Now that you understand CFGs, CFLs, and their theoretical context, discover how they power 
+            real-world technologies you use every day.
           </p>
 
           {/* Applications Grid */}

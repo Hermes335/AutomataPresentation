@@ -45,16 +45,16 @@ const Navbar = ({ sections }) => {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-6 sm:px-8 lg:px-12">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+          {/* Logo - Absolute Left Corner */}
           <div className="flex-shrink-0">
             <h1 className="text-xl font-bold gradient-text">
               CFG
             </h1>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Absolute Right Corner */}
           <div className="hidden md:flex space-x-1">
             {sections.map(({ id, label }) => (
               <button
@@ -71,7 +71,7 @@ const Navbar = ({ sections }) => {
             ))}
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu button - Absolute Right Corner */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}

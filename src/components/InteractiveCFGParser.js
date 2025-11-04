@@ -406,11 +406,11 @@ const InteractiveCFGParser = () => {
                 </h4>
                 <div className="glass rounded-lg p-6 overflow-x-auto">
                   <svg 
-                    viewBox="0 0 1000 600" 
+                    viewBox="0 0 1400 800" 
                     className="w-full h-auto"
-                    style={{ minHeight: '500px' }}
+                    style={{ minHeight: '600px' }}
                   >
-                    {renderParseTree(parseResult.tree, 500, 50, 900)}
+                    {renderParseTree(parseResult.tree, 700, 50, 1300)}
                   </svg>
                 </div>
                 <div className="mt-4 flex items-center justify-center space-x-6 text-sm">

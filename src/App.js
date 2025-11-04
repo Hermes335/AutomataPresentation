@@ -28,10 +28,10 @@ function App() {
   const sections = [
     { id: 'hero', label: 'Home', component: Hero },
     { id: 'definition', label: 'Definition', component: Definition },
-    { id: 'example', label: 'Example', component: Example },
-    { id: 'parse-tree', label: 'Parse Tree', component: ParseTree },
-    { id: 'applications', label: 'Applications', component: Applications },
+    { id: 'example', label: 'Examples', component: Example },
+    { id: 'parse-tree', label: 'Parse Trees', component: ParseTree },
     { id: 'comparison', label: 'Comparison', component: Comparison },
+    { id: 'applications', label: 'Applications', component: Applications },
     { id: 'conclusion', label: 'Conclusion', component: Conclusion },
     { id: 'references', label: 'References', component: References },
   ];

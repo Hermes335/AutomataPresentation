@@ -10,12 +10,16 @@ const Conclusion = () => {
 
   const keyTakeaways = [
     {
+      title: 'Dual Concepts',
+      description: 'CFGs are the rules (grammar) that generate CFLs (the set of valid strings). Understanding both is essential.'
+    },
+    {
       title: 'Theoretical Foundation',
-      description: 'CFGs provide a mathematical framework for understanding language structure and generation.'
+      description: 'CFGs and CFLs provide a mathematical framework for understanding language structure, generation, and recognition.'
     },
     {
       title: 'Practical Applications',
-      description: 'Essential for compiler design, parsing, and language processing in real-world software.'
+      description: 'Essential for compiler design, parsing, and language processing in real-world software systems.'
     },
     {
       title: 'Hierarchical Structure',
@@ -23,7 +27,7 @@ const Conclusion = () => {
     },
     {
       title: 'Balance of Power',
-      description: 'More expressive than regular grammars while remaining computationally tractable.'
+      description: 'CFLs are more expressive than regular languages while remaining computationally tractable with PDAs.'
     }
   ];
 
@@ -93,10 +97,10 @@ const Conclusion = () => {
           >
             <Sparkles className="mb-4 text-accent-400" size={32} />
             <blockquote className="text-2xl md:text-3xl font-light italic mb-4 leading-relaxed text-text-primary">
-              "Context-Free Grammars bridge theory and practice in the understanding of language structures."
+              "Context-Free Grammars and Languages bridge theory and practice in understanding formal language structures."
             </blockquote>
             <p className="text-lg text-text-secondary">
-              They enable us to formally describe, analyze, and implement languages—both natural and artificial.
+              They enable us to formally describe, generate, recognize, and implement languages—both natural and artificial.
             </p>
           </motion.div>
 
@@ -109,13 +113,14 @@ const Conclusion = () => {
           >
             <h3 className="text-2xl font-semibold text-text-primary mb-4">Final Thoughts</h3>
             <p className="text-text-secondary leading-relaxed mb-4">
-              Context-Free Grammars are fundamental to computer science, providing the theoretical foundation 
-              for language design and implementation. From compilers to natural language processing, CFGs 
-              continue to play a crucial role in how we build and understand computational systems.
+              Context-Free Grammars and Context-Free Languages are fundamental to computer science, providing 
+              the theoretical foundation for language design, parsing, and implementation. From compilers to 
+              natural language processing, these concepts continue to play a crucial role in how we build 
+              and understand computational systems.
             </p>
             <p className="text-text-secondary text-sm">
-              Understanding CFGs deepens our appreciation for the elegant mathematical structures 
-              underlying modern computing.
+              Understanding both the grammar (how to generate) and the language (what is generated) 
+              deepens our appreciation for the elegant mathematical structures underlying modern computing.
             </p>
           </motion.div>
 

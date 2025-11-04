@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { GitCompare, AlertCircle } from 'lucide-react';
+import { GitCompare, AlertCircle, Sparkles, CheckCircle, XCircle } from 'lucide-react';
 import WorkedExamples from '../WorkedExamples';
 
 const Comparison = () => {
@@ -67,9 +67,20 @@ const Comparison = () => {
           transition={{ duration: 0.8 }}
         >
           {/* Title */}
-          <h2 className="text-5xl md:text-6xl font-bold text-center mb-12 gradient-text">
-            Comparison & Limitations
+          <h2 className="text-5xl md:text-6xl font-bold text-center mb-6 gradient-text">
+            CFG & CFL in Context
           </h2>
+          
+          {/* Section Introduction */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-xl text-text-secondary text-center mb-12 max-w-4xl mx-auto"
+          >
+            Before exploring real-world applications, let's understand where Context-Free Grammars 
+            and Context-Free Languages fit in the Chomsky hierarchy and what their limitations are.
+          </motion.p>
 
           {/* CFG vs Regular Grammar */}
           <motion.div
@@ -142,6 +153,87 @@ const Comparison = () => {
             </div>
           </motion.div>
 
+          {/* Context-Free Language Properties */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="glass-dark rounded-2xl shadow-glow p-8 md:p-10 mb-10 border-glow"
+          >
+            <h3 className="text-3xl font-semibold text-text-primary mb-6 flex items-center">
+              <Sparkles className="mr-3 text-accent-400" size={32} />
+              Properties of Context-Free Languages
+            </h3>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Closure Properties */}
+              <div className="glass rounded-xl p-6 border-glow">
+                <h4 className="font-bold text-primary-400 mb-4 text-lg">Closure Properties</h4>
+                <div className="space-y-3">
+                  <div className="flex items-start space-x-2">
+                    <CheckCircle className="text-green-400 flex-shrink-0 mt-1" size={18} />
+                    <div>
+                      <p className="text-text-primary font-medium">Closed Under</p>
+                      <p className="text-sm text-text-secondary">Union, Concatenation, Kleene Star, Reversal</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <XCircle className="text-red-400 flex-shrink-0 mt-1" size={18} />
+                    <div>
+                      <p className="text-text-primary font-medium">NOT Closed Under</p>
+                      <p className="text-sm text-text-secondary">Intersection, Complement</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Recognition & Decidability */}
+              <div className="glass rounded-xl p-6 border-glow">
+                <h4 className="font-bold text-accent-400 mb-4 text-lg">Recognition & Decidability</h4>
+                <div className="space-y-3">
+                  <div className="flex items-start space-x-2">
+                    <CheckCircle className="text-green-400 flex-shrink-0 mt-1" size={18} />
+                    <div>
+                      <p className="text-text-primary font-medium">Membership Problem</p>
+                      <p className="text-sm text-text-secondary">Decidable - CYK algorithm O(n³)</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <CheckCircle className="text-green-400 flex-shrink-0 mt-1" size={18} />
+                    <div>
+                      <p className="text-text-primary font-medium">Emptiness Problem</p>
+                      <p className="text-sm text-text-secondary">Decidable - Can determine if L(G) = ∅</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <XCircle className="text-red-400 flex-shrink-0 mt-1" size={18} />
+                    <div>
+                      <p className="text-text-primary font-medium">Equivalence Problem</p>
+                      <p className="text-sm text-text-secondary">Undecidable - Cannot always determine if L(G₁) = L(G₂)</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Pumping Lemma */}
+              <div className="glass rounded-xl p-6 border-glow md:col-span-2">
+                <h4 className="font-bold text-primary-400 mb-4 text-lg">Pumping Lemma for CFLs</h4>
+                <div className="font-mono text-sm text-accent-400 bg-dark-bg/50 p-4 rounded-lg mb-3">
+                  <p>If L is a CFL, then ∃p (pumping length) such that:</p>
+                  <p className="mt-2">∀ string s ∈ L where |s| ≥ p, ∃ division s = uvxyz where:</p>
+                  <ul className="list-disc list-inside mt-2 text-xs space-y-1 text-text-secondary">
+                    <li>|vxy| ≤ p</li>
+                    <li>|vy| ≥ 1</li>
+                    <li>∀i ≥ 0: uv<sup>i</sup>xy<sup>i</sup>z ∈ L</li>
+                  </ul>
+                </div>
+                <p className="text-sm text-text-secondary">
+                  Used to prove that certain languages (like {'{'}a<sup>n</sup>b<sup>n</sup>c<sup>n</sup>{'}'}) are NOT context-free.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Limitations */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -151,7 +243,7 @@ const Comparison = () => {
           >
             <h3 className="text-3xl font-semibold text-text-primary mb-6 flex items-center">
               <AlertCircle className="mr-3 text-orange-400" size={32} />
-              Limitations of CFG
+              Limitations of Context-Free Languages
             </h3>
 
             <div className="grid md:grid-cols-3 gap-6">

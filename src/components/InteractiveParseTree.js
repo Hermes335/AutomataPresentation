@@ -8,12 +8,12 @@ const InteractiveParseTree = () => {
 
   const nodes = [
     { id: 'S', x: 250, y: 40, type: 'non-terminal', label: 'S', rule: 'S → ( S )', description: 'Start symbol - root of parse tree' },
-    { id: '(1', x: 150, y: 120, type: 'terminal', label: '(', description: 'Left parenthesis terminal' },
+    { id: '(1', x: 130, y: 120, type: 'terminal', label: '(', description: 'Left parenthesis terminal' },
     { id: 'S2', x: 250, y: 120, type: 'non-terminal', label: 'S', rule: 'S → ( S )', description: 'Nested S non-terminal' },
-    { id: ')1', x: 350, y: 120, type: 'terminal', label: ')', description: 'Right parenthesis terminal' },
-    { id: '(2', x: 200, y: 200, type: 'terminal', label: '(', description: 'Inner left parenthesis' },
+    { id: ')1', x: 370, y: 120, type: 'terminal', label: ')', description: 'Right parenthesis terminal' },
+    { id: '(2', x: 180, y: 200, type: 'terminal', label: '(', description: 'Inner left parenthesis' },
     { id: 'S3', x: 250, y: 200, type: 'non-terminal', label: 'S', rule: 'S → ε', description: 'S derives to empty string' },
-    { id: ')2', x: 300, y: 200, type: 'terminal', label: ')', description: 'Inner right parenthesis' },
+    { id: ')2', x: 320, y: 200, type: 'terminal', label: ')', description: 'Inner right parenthesis' },
     { id: 'eps', x: 250, y: 280, type: 'epsilon', label: 'ε', description: 'Empty string (epsilon)' }
   ];
 
@@ -223,7 +223,8 @@ const InteractiveParseTree = () => {
                 key="default"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="glass rounded-xl p-6 border-glow h-full flex flex-col items-center justify-center text-center"
+                className="glass rounded-xl p-6 border-glow flex flex-col items-center justify-center text-center"
+                style={{ height: '71%' }}
               >
                 <Info className="text-accent-400 mb-4" size={48} />
                 <p className="text-text-secondary mb-2">
