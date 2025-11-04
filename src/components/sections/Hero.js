@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, BookOpen, Code, Zap, GitBranch } from 'lucide-react';
+import { BookOpen, Code, Zap, GitBranch } from 'lucide-react';
 
 const Hero = () => {
   const features = [

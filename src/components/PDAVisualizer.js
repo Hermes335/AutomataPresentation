@@ -5,7 +5,6 @@ import { Play, Pause, RotateCcw, ChevronRight } from 'lucide-react';
 const PDAVisualizer = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [inputString, setInputString] = useState('aabb');
 
   // Example: Recognize a^n b^n using PDA
   const steps = [
