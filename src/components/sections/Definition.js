@@ -147,7 +147,7 @@ const Definition = () => {
             </div>
           </motion.div>
 
-          {/* Formal Definition */}
+          {/* Formal Definitions */}
           <motion.div
             variants={itemVariants}
             className="relative rounded-2xl shadow-glow-lg p-8 md:p-10 mb-8 overflow-hidden"
@@ -158,9 +158,12 @@ const Definition = () => {
           >
             <h3 className="text-2xl font-semibold mb-6 flex items-center text-text-primary">
               <FileText className="mr-3 text-accent-400" size={28} />
-              Formal Definition
+              Formal Definitions
             </h3>
-            <div className="glass rounded-xl p-6 font-mono text-lg border-glow">
+            
+            {/* CFG Definition */}
+            <div className="glass rounded-xl p-6 font-mono text-lg border-glow mb-6">
+              <p className="text-sm text-text-muted mb-2">Context-Free Grammar:</p>
               <p className="mb-4 text-center text-2xl text-accent-400">CFG = (V, Σ, R, S)</p>
               <div className="space-y-3 text-base text-text-secondary">
                 <p><strong className="text-primary-400">V</strong> = Finite set of <em className="text-accent-400">variables</em> (non-terminals)</p>
@@ -168,6 +171,24 @@ const Definition = () => {
                 <p><strong className="text-primary-400">R</strong> = Finite set of <em className="text-accent-400">production rules</em></p>
                 <p><strong className="text-primary-400">S</strong> = <em className="text-accent-400">Start symbol</em> (S ∈ V)</p>
               </div>
+            </div>
+
+            {/* PDA Definition */}
+            <div className="glass rounded-xl p-6 font-mono text-lg border-glow">
+              <p className="text-sm text-text-muted mb-2">Pushdown Automaton (Recognition Device for CFLs):</p>
+              <p className="mb-4 text-center text-2xl text-accent-400">PDA = (Q, Σ, Γ, δ, q₀, Z, F)</p>
+              <div className="space-y-3 text-base text-text-secondary">
+                <p><strong className="text-primary-400">Q</strong> = Finite set of <em className="text-accent-400">states</em></p>
+                <p><strong className="text-primary-400">Σ</strong> = Input <em className="text-accent-400">alphabet</em></p>
+                <p><strong className="text-primary-400">Γ</strong> = Stack <em className="text-accent-400">alphabet</em></p>
+                <p><strong className="text-primary-400">δ</strong> = <em className="text-accent-400">Transition function</em>: Q × (Σ ∪ {'{'}ε{'}'}) × Γ → P(Q × Γ*)</p>
+                <p><strong className="text-primary-400">q₀</strong> = <em className="text-accent-400">Initial state</em> (q₀ ∈ Q)</p>
+                <p><strong className="text-primary-400">Z</strong> = <em className="text-accent-400">Initial stack symbol</em></p>
+                <p><strong className="text-primary-400">F</strong> = Set of <em className="text-accent-400">accepting states</em> (F ⊆ Q)</p>
+              </div>
+              <p className="text-xs text-text-muted mt-4 text-center">
+                A PDA is essentially a finite automaton with a <strong className="text-accent-400">stack</strong> for memory
+              </p>
             </div>
           </motion.div>
 

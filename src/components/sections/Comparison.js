@@ -272,6 +272,119 @@ const Comparison = () => {
             </div>
           </motion.div>
 
+          {/* Ambiguity Resolution */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="glass-dark rounded-2xl shadow-glow p-8 md:p-10 mb-10 border-glow"
+          >
+            <h3 className="text-3xl font-semibold text-text-primary mb-6 flex items-center">
+              <Sparkles className="mr-3 text-orange-400" size={32} />
+              Handling Ambiguity in Grammars
+            </h3>
+
+            <div className="space-y-6">
+              {/* What is Ambiguity */}
+              <div className="glass rounded-xl p-6 border-glow">
+                <h4 className="font-bold text-accent-400 mb-3 text-lg">What is Ambiguity?</h4>
+                <p className="text-text-secondary mb-4">
+                  A grammar is <strong className="text-primary-400">ambiguous</strong> if there exists at least one string that has 
+                  <strong className="text-accent-400"> two or more distinct parse trees</strong> (or leftmost/rightmost derivations).
+                </p>
+                <div className="glass-dark rounded-lg p-4 border-glow">
+                  <p className="text-sm text-text-muted mb-2">Example: Ambiguous Arithmetic Grammar</p>
+                  <div className="font-mono text-accent-400 space-y-1 text-sm">
+                    <p>E → E + E | E * E | (E) | id</p>
+                  </div>
+                  <p className="text-xs text-text-muted mt-3">
+                    The string "id + id * id" has multiple parse trees, leading to different evaluation orders.
+                  </p>
+                </div>
+              </div>
+
+              {/* Resolution Strategies */}
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Strategy 1: Precedence */}
+                <div className="glass rounded-xl p-6 border-l-4 border-primary-500">
+                  <h4 className="font-bold text-primary-400 mb-3">1. Operator Precedence</h4>
+                  <p className="text-sm text-text-secondary mb-3">
+                    Rewrite grammar to enforce operator precedence hierarchy.
+                  </p>
+                  <div className="glass-dark rounded-lg p-3 border-glow">
+                    <p className="text-xs text-text-muted mb-2">Unambiguous Grammar:</p>
+                    <div className="font-mono text-accent-400 space-y-1 text-xs">
+                      <p>E → E + T | T</p>
+                      <p>T → T * F | F</p>
+                      <p>F → (E) | id</p>
+                    </div>
+                    <p className="text-xs text-green-400 mt-2">✓ * has higher precedence than +</p>
+                  </div>
+                </div>
+
+                {/* Strategy 2: Associativity */}
+                <div className="glass rounded-xl p-6 border-l-4 border-accent-400">
+                  <h4 className="font-bold text-accent-400 mb-3">2. Associativity Rules</h4>
+                  <p className="text-sm text-text-secondary mb-3">
+                    Specify left or right associativity through grammar structure.
+                  </p>
+                  <div className="glass-dark rounded-lg p-3 border-glow">
+                    <p className="text-xs text-text-muted mb-2">Left-Associative:</p>
+                    <div className="font-mono text-accent-400 space-y-1 text-xs">
+                      <p>E → E + T</p>
+                      <p className="text-green-400">✓ (a+b)+c</p>
+                    </div>
+                    <p className="text-xs text-text-muted mt-2 mb-2">Right-Associative:</p>
+                    <div className="font-mono text-accent-400 space-y-1 text-xs">
+                      <p>E → T + E</p>
+                      <p className="text-green-400">✓ a+(b+c)</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Strategy 3: Longest Match */}
+                <div className="glass rounded-xl p-6 border-l-4 border-orange-400">
+                  <h4 className="font-bold text-orange-400 mb-3">3. Longest Match Rule</h4>
+                  <p className="text-sm text-text-secondary mb-3">
+                    Always choose the production that consumes the most input (greedy matching).
+                  </p>
+                  <div className="glass-dark rounded-lg p-3 border-glow">
+                    <p className="text-xs text-accent-400">Used in lexical analysis</p>
+                    <p className="text-xs text-text-secondary mt-2">
+                      Example: "ifx" matches as single identifier, not "if" + "x"
+                    </p>
+                  </div>
+                </div>
+
+                {/* Strategy 4: Disambiguation Rules */}
+                <div className="glass rounded-xl p-6 border-l-4 border-green-400">
+                  <h4 className="font-bold text-green-400 mb-3">4. Parser Directives</h4>
+                  <p className="text-sm text-text-secondary mb-3">
+                    Use parser generator directives (like in Yacc/Bison) to specify precedence.
+                  </p>
+                  <div className="glass-dark rounded-lg p-3 border-glow">
+                    <p className="text-xs text-text-muted mb-2">Yacc Example:</p>
+                    <div className="font-mono text-accent-400 space-y-1 text-xs">
+                      <p>%left '+' '-'</p>
+                      <p>%left '*' '/'</p>
+                      <p>%right '^'</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Practical Note */}
+              <div className="glass rounded-xl p-6 border-glow bg-gradient-to-r from-primary-500/10 to-accent-400/10">
+                <h4 className="font-bold text-text-primary mb-3">💡 Practical Approach</h4>
+                <p className="text-sm text-text-secondary">
+                  In compiler design, ambiguity is typically resolved at the <strong className="text-primary-400">grammar level</strong> by 
+                  restructuring productions, or at the <strong className="text-accent-400">parser level</strong> using precedence declarations. 
+                  Modern parser generators like ANTLR, Yacc, and Bison provide built-in mechanisms for disambiguation.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Worked Examples Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
