@@ -4,6 +4,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Network } from 'lucide-react';
 import InteractiveParseTree from '../InteractiveParseTree';
+import ArithmeticParseTree from '../ArithmeticParseTree';
 
 const ParseTree = () => {
   const ref = useRef(null);
@@ -170,6 +171,16 @@ const ParseTree = () => {
               </div>
             </div>
           </div>
+
+          {/* Arithmetic Expression Parse Trees - NEW! */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-8"
+          >
+            <ArithmeticParseTree />
+          </motion.div>
 
           {/* Interactive Parse Tree Component */}
           <motion.div

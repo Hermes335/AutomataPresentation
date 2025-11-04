@@ -4,6 +4,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { PlayCircle, ArrowRight } from 'lucide-react';
 import InteractiveDerivation from '../InteractiveDerivation';
+import InteractiveCFGParser from '../InteractiveCFGParser';
 
 const Example = () => {
   const ref = useRef(null);
@@ -78,11 +79,22 @@ const Example = () => {
             </div>
           </motion.div>
 
+          {/* Interactive CFG Parser - NEW! */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-8"
+          >
+            <InteractiveCFGParser />
+          </motion.div>
+
           {/* Interactive Derivation Component */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mt-8"
           >
             <InteractiveDerivation />
           </motion.div>
@@ -91,7 +103,7 @@ const Example = () => {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
             className="glass-dark rounded-2xl shadow-glow p-8 mt-8"
           >
             <h3 className="text-2xl font-semibold text-text-primary mb-6 flex items-center">

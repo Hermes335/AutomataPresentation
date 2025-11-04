@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, GitMerge, Layers, ChevronRight } from 'lucide-react';
+import { BookOpen, GitMerge, Layers } from 'lucide-react';
 
 const WorkedExamples = () => {
   const [activeExample, setActiveExample] = useState('ambiguous');
