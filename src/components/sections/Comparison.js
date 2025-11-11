@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { GitCompare, AlertCircle, Sparkles, CheckCircle, XCircle } from 'lucide-react';
-import WorkedExamples from '../WorkedExamples';
+
 
 const Comparison = () => {
   const ref = useRef(null);
@@ -279,7 +279,6 @@ const Comparison = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="mt-8"
           >
-            <WorkedExamples />
           </motion.div>
         </motion.div>
       </div>

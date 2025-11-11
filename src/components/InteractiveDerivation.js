@@ -87,7 +87,7 @@ const InteractiveDerivation = () => {
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-2xl font-bold text-text-primary flex items-center">
           <Zap className="mr-2 text-accent-400" size={28} />
-          Interactive Derivation Demo
+          Interactive Derivation Steps
         </h3>
         
         {/* Speed Control */}

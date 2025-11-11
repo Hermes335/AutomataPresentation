@@ -4,6 +4,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import InteractiveDerivation from '../InteractiveDerivation';
 import InteractiveCFGParser from '../InteractiveCFGParser';
+import PDAVisualizer from '../PDAVisualizer';
 
 const Example = () => {
   const ref = useRef(null);
@@ -27,7 +28,7 @@ const Example = () => {
         >
           {/* Title */}
           <h2 className="text-5xl md:text-6xl font-bold text-center mb-6 gradient-text">
-            Grammars & Languages in Action
+            Grammars & Languages Examples
           </h2>
           
           {/* Section Introduction */}
@@ -37,8 +38,7 @@ const Example = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-xl text-text-secondary text-center mb-12 max-w-3xl mx-auto"
           >
-            Let's see how Context-Free Grammars generate Context-Free Languages through interactive examples. 
-            Try the parsers below and watch how grammars produce languages!
+            Explore context-free grammars through interactive examples. Understand how grammar rules generate languages and see derivations in real-time.
           </motion.p>
 
           {/* Grammar Rules */}
@@ -89,6 +89,18 @@ const Example = () => {
           >
             <InteractiveDerivation />
           </motion.div>
+
+
+          {/* PDA Visualizer */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="mt-8"
+          >
+            <PDAVisualizer />
+          </motion.div>
+
         </motion.div>
       </div>
     </div>

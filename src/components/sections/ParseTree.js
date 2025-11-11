@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import { Network } from 'lucide-react';
 import InteractiveParseTree from '../InteractiveParseTree';
 import ArithmeticParseTree from '../ArithmeticParseTree';
-import PDAVisualizer from '../PDAVisualizer';
+
 
 const ParseTree = () => {
   const ref = useRef(null);
@@ -78,15 +78,6 @@ const ParseTree = () => {
             <InteractiveParseTree />
           </motion.div>
 
-          {/* PDA Visualizer */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="mt-8"
-          >
-            <PDAVisualizer />
-          </motion.div>
         </motion.div>
       </div>
     </div>
