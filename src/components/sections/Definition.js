@@ -191,35 +191,6 @@ const Definition = () => {
               </p>
             </div>
           </motion.div>
-
-          {/* Importance */}
-          <motion.div variants={itemVariants}>
-            <div className="grid md:grid-cols-2 gap-6">
-              <motion.div 
-                className="glass-dark rounded-xl shadow-lg p-6 hover-glow transition-all duration-300"
-                whileHover={{ scale: 1.02 }}
-              >
-                <Cpu className="text-primary-400 mb-4" size={28} />
-                <h4 className="text-xl font-semibold text-text-primary mb-3">Language Generation</h4>
-                <p className="text-text-secondary">
-                  CFGs provide a systematic way to generate all valid strings in a language, 
-                  making them essential for defining programming language syntax.
-                </p>
-              </motion.div>
-              
-              <motion.div 
-                className="glass-dark rounded-xl shadow-lg p-6 hover-glow transition-all duration-300"
-                whileHover={{ scale: 1.02 }}
-              >
-                <GitBranch className="text-primary-400 mb-4" size={28} />
-                <h4 className="text-xl font-semibold text-text-primary mb-3">Recursive Structure</h4>
-                <p className="text-text-secondary">
-                  They capture the hierarchical and recursive nature of natural and programming 
-                  languages through production rules and derivations.
-                </p>
-              </motion.div>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </div>
