@@ -18,7 +18,8 @@ const InteractiveCFGParser = () => {
         i++;
         continue;
       }
-      if (str[i] === '+' || str[i] === '*' || str[i] === '(' || str[i] === ')') {
+      // accept division '/' as well
+      if (str[i] === '+' || str[i] === '*' || str[i] === '/' || str[i] === '(' || str[i] === ')') {
         tokens.push(str[i]);
         i++;
       } else if (str.substring(i, i + 2) === 'id') {
@@ -73,11 +74,13 @@ const InteractiveCFGParser = () => {
       if (!fNode) return null;
       currentNode.children.push(fNode);
 
-      if (pos < tokens.length && tokens[pos] === '*') {
-        const starNode = { id: nodeId++, symbol: '*', children: [], parent: currentNode, type: 'terminal' };
-        parseTreeNodes.push(starNode);
-        currentNode.children.push(starNode);
-        derivationSteps.push({ step: getCurrentString(), rule: 'T → F * T', applied: true });
+      // handle multiplication or division (same precedence)
+      if (pos < tokens.length && (tokens[pos] === '*' || tokens[pos] === '/')) {
+        const op = tokens[pos];
+        const opNode = { id: nodeId++, symbol: op, children: [], parent: currentNode, type: 'terminal' };
+        parseTreeNodes.push(opNode);
+        currentNode.children.push(opNode);
+        derivationSteps.push({ step: getCurrentString(), rule: `T → F ${op} T`, applied: true });
         pos++;
 
         const tNode = parseT(currentNode);
@@ -170,6 +173,8 @@ const InteractiveCFGParser = () => {
   const examples = [
     { label: 'Simple', value: 'id + id' },
     { label: 'With Multiply', value: 'id + id * id' },
+    { label: 'Division + Add', value: 'id / id + id' },
+    { label: 'Multiply/Divide', value: 'id * id / id' },
     { label: 'Nested', value: '( id + id ) * id' },
     { label: 'Complex', value: 'id * ( id + id )' }
   ];
@@ -269,11 +274,11 @@ const InteractiveCFGParser = () => {
         <h4 className="text-sm font-semibold text-primary-400 mb-3">Grammar Rules:</h4>
         <div className="font-mono text-sm text-text-secondary space-y-1">
           <div>E → E + T | T</div>
-          <div>T → T * F | F</div>
+          <div>T → T * F | T / F | F</div>
           <div>F → ( E ) | id</div>
         </div>
         <p className="text-xs text-text-muted mt-3">
-          This grammar defines arithmetic expressions with + and * operators, parentheses, and identifiers.
+          This grammar defines arithmetic expressions with +, *, and / operators, parentheses, and identifiers.
         </p>
       </div>
 
@@ -289,7 +294,7 @@ const InteractiveCFGParser = () => {
               value={inputString}
               onChange={(e) => setInputString(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && handleParse()}
-              placeholder="e.g., id + id * id"
+              placeholder="e.g., id + id * id  or  id / id + id"
               className="flex-1 px-4 py-3 glass-dark rounded-lg text-text-primary font-mono border-2 border-primary-500/30 focus:border-accent-400 focus:outline-none transition-all"
             />
             <motion.button
@@ -436,6 +441,7 @@ const InteractiveCFGParser = () => {
             Enter a string using <span className="font-mono text-accent-400">id</span>, 
             <span className="font-mono text-accent-400"> + </span>, 
             <span className="font-mono text-accent-400"> * </span>, 
+            <span className="font-mono text-accent-400"> / </span>,
             <span className="font-mono text-accent-400"> ( </span>, and 
             <span className="font-mono text-accent-400"> ) </span>
           </p>
