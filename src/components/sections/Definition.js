@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { BookOpen, Cpu, FileText, GitBranch, ArrowRight, List } from 'lucide-react';
+import { BookOpen, FileText, ArrowRight, List } from 'lucide-react';
 
 const Definition = () => {
   const ref = useRef(null);
