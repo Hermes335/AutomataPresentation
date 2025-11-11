@@ -10,6 +10,15 @@ const Hero = () => {
     { icon: GitBranch, text: 'Visual Trees', color: 'text-purple-400' }
   ];
 
+  // Added: five notable names between the badge and the title
+  const names = [
+    'Amolong',
+    'Arostique',
+    'Cordero',
+    'Pillado',
+    'Sagala'
+  ];
+
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Enhanced animated gradient orbs */}
@@ -78,8 +87,25 @@ const Hero = () => {
             className="mb-6 inline-block mt-8"
           >
             <div className="glass px-6 py-2 rounded-full border-glow">
-              <span className="text-sm text-accent-400 font-semibold">Automata Theory & Formal Languages</span>
+              <span className="text-sm text-accent-400 font-semibold">Automata Theory &amp; Formal Languages</span>
             </div>
+          </motion.div>
+
+          {/* New: list of five names */}
+          <motion.div
+            className="mb-6 flex flex-wrap justify-center gap-3"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            {names.map((n, i) => (
+              <div
+                key={i}
+                className="glass px-3 py-2 rounded-lg border-glow flex items-center space-x-2 hover:shadow-glow transition-all cursor-pointer"
+              >
+                {n}
+              </div>
+            ))}
           </motion.div>
 
           {/* Main title with enhanced animation */}
@@ -159,38 +185,9 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.4 }}
           >
-            <motion.a
-              href="#definition"
-              whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(99, 102, 241, 0.5)' }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block bg-gradient-to-r from-primary-500 to-accent-400 text-white px-10 py-4 rounded-xl font-bold text-lg shadow-glow hover:shadow-glow-lg transition-all"
-            >
-              Start Learning
-            </motion.a>
           </motion.div>
 
-          {/* Info section */}
-          <motion.div
-            className="mt-16 space-y-2 text-text-muted"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.6 }}
-          >
-            <div className="flex items-center justify-center space-x-8 text-sm">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 rounded-full bg-green-400"></div>
-                <span>5 Interactive Components</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 rounded-full bg-blue-400"></div>
-                <span>Real-time Parsing</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 rounded-full bg-purple-400"></div>
-                <span>Visual Learning</span>
-              </div>
-            </div>
-          </motion.div>
+        
         </motion.div>
       </div>
     </div>
