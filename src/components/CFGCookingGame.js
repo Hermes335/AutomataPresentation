@@ -62,11 +62,11 @@ const CFGCookingGame = () => {
   ];
 
   const availableCards = {
-    meat: ["Chicken", "Beef", "Pork", "Fish"],
-    prep: ["Marinate", "Season", "Coat"],
-    cooking: ["Grill", "Fry", "Bake", "Steam", "Boil"],
-    side: ["Rice", "Fries", "Salad", "Vegetables"],
-    sauce: ["Spicy Sauce", "Ketchup", "BBQ", "Cheese"]
+    meat: ["Chicken", "Beef", "Pork", "Fish", "Lamb", "Turkey", "Duck", "Shrimp"],
+    prep: ["Marinate", "Season", "Coat", "Slice", "Dice", "Chop", "Tenderize"],
+    cooking: ["Grill", "Fry", "Bake", "Steam", "Boil", "Roast", "Sauté", "Broil"],
+    side: ["Rice", "Fries", "Salad", "Vegetables", "Pasta", "Bread", "Mashed Potatoes", "Coleslaw"],
+    sauce: ["Spicy Sauce", "Ketchup", "BBQ", "Cheese", "Gravy", "Teriyaki", "Mustard", "Mayo"]
   };
 
   const currentRecipe = recipes[currentLevel];
@@ -198,32 +198,32 @@ const CFGCookingGame = () => {
         <h4 className="text-sm font-semibold text-primary-400 mb-3 uppercase tracking-wide">
           Drag ingredients here (in correct CFG order):
         </h4>
-        <div className="flex gap-2 flex-wrap">
+        <div className="flex gap-3 flex-wrap">
           {slots.map((slot, index) => (
             <div
               key={index}
               onDrop={() => handleDrop(index)}
               onDragOver={handleDragOver}
               className={`
-                relative min-w-[140px] h-[80px] rounded-xl border-2 border-dashed
+                relative flex-1 min-w-[180px] h-[100px] rounded-xl border-2 border-dashed
                 flex items-center justify-center cursor-pointer transition-all
                 ${slot ? 'border-accent-400 bg-accent-400/20' : 'border-primary-500/50 bg-primary-500/5 hover:border-primary-400 hover:bg-primary-500/10'}
               `}
             >
               {slot ? (
-                <div className="relative w-full h-full p-2">
+                <div className="relative w-full h-full p-3">
                   <div className={`w-full h-full rounded-lg bg-gradient-to-br ${getCategoryColor(slot)} flex items-center justify-center relative`}>
-                    <span className="text-white font-bold text-sm text-center px-2">{slot}</span>
+                    <span className="text-white font-bold text-base text-center px-2">{slot}</span>
                     <button
                       onClick={() => handleRemoveFromSlot(index)}
-                      className="absolute -top-2 -right-2 bg-red-500 rounded-full p-1 hover:bg-red-600 transition-all"
+                      className="absolute -top-2 -right-2 bg-red-500 rounded-full p-1.5 hover:bg-red-600 transition-all"
                     >
-                      <X size={12} className="text-white" />
+                      <X size={14} className="text-white" />
                     </button>
                   </div>
                 </div>
               ) : (
-                <div className="text-text-muted text-xs text-center">
+                <div className="text-text-muted text-sm text-center font-semibold">
                   Slot {index + 1}
                 </div>
               )}
@@ -237,25 +237,25 @@ const CFGCookingGame = () => {
         <h4 className="text-sm font-semibold text-primary-400 mb-3 uppercase tracking-wide">
           Available Ingredients:
         </h4>
-        <div className="space-y-3">
+        <div className="grid grid-cols-5 gap-4">
           {Object.entries(availableCards).map(([category, items]) => (
-            <div key={category} className="glass rounded-lg p-3">
-              <div className="text-xs text-accent-400 font-semibold mb-2 uppercase">
+            <div key={category} className="glass rounded-lg p-4">
+              <div className="text-sm text-accent-400 font-semibold mb-3 uppercase text-center">
                 {category}
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="space-y-2">
                 {items.map((item) => (
                   <div
                     key={item}
                     draggable={!slots.includes(item)}
                     onDragStart={() => handleDragStart(item)}
                     className={`
-                      rounded-lg px-3 py-2 text-center cursor-move transition-all
+                      rounded-lg p-3 text-center cursor-move transition-all
                       bg-gradient-to-br ${getCategoryColor(item)}
                       ${slots.includes(item) ? 'opacity-30 cursor-not-allowed' : 'hover:scale-105 shadow-lg'}
                     `}
                   >
-                    <span className="text-white font-semibold text-xs">{item}</span>
+                    <span className="text-white font-semibold text-sm">{item}</span>
                   </div>
                 ))}
               </div>
