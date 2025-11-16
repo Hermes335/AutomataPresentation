@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Code, MessageSquare, Braces, Zap } from 'lucide-react';
+import { Code, MessageSquare, Braces, Zap, Gamepad2 } from 'lucide-react';
+import CFGCookingGame from '../CFGCookingGame';
 
 const Applications = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [showGame, setShowGame] = useState(false);
 
   const applications = [
     {
@@ -62,6 +64,35 @@ const Applications = () => {
             Now that you understand CFGs, CFLs, and their theoretical context, discover how they power 
             real-world technologies you use every day.
           </p>
+
+          {/* Interactive Game Toggle */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.6 }}
+            className="mb-12"
+          >
+            <button
+              onClick={() => setShowGame(!showGame)}
+              className="mx-auto flex items-center gap-3 bg-gradient-to-r from-primary-500 to-accent-400 text-white font-bold py-4 px-8 rounded-xl hover:shadow-glow transition-all text-lg"
+            >
+              <Gamepad2 size={28} />
+              {showGame ? 'Hide' : 'Play'} Interactive CFG Cooking Game
+            </button>
+          </motion.div>
+
+          {/* Game Section */}
+          {showGame && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-12"
+            >
+              <CFGCookingGame />
+            </motion.div>
+          )}
 
           {/* Applications Grid */}
           <div className="grid md:grid-cols-2 gap-8">

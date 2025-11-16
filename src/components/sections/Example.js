@@ -4,7 +4,6 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import InteractiveDerivation from '../InteractiveDerivation';
 import InteractiveCFGParser from '../InteractiveCFGParser';
-import PDAVisualizer from '../PDAVisualizer';
 
 const Example = () => {
   const ref = useRef(null);
@@ -53,7 +52,7 @@ const Example = () => {
               {grammar.map((item, index) => (
                 <div
                   key={index}
-                  className="grammar-rule"
+                  className="grammar-rule"  
                 >
                   <p className="font-mono text-xl text-accent-400 mb-2">{item.rule}</p>
                   <p className="text-sm text-text-secondary">{item.description}</p>
@@ -88,17 +87,6 @@ const Example = () => {
             className="mt-8"
           >
             <InteractiveDerivation />
-          </motion.div>
-
-
-          {/* PDA Visualizer */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="mt-8"
-          >
-            <PDAVisualizer />
           </motion.div>
 
         </motion.div>
