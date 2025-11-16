@@ -23,9 +23,7 @@ const Applications = () => {
           <h2 className="text-5xl md:text-6xl font-bold text-center mb-6 gradient-text">
             CFG Cooking Game
           </h2>
-          <p className="text-center text-xl text-text-secondary mb-12 max-w-3xl mx-auto">
-            Master CFG concepts through interactive gameplay: drag and drop ingredients to build recipes following grammar rules and earn points in this hands-on challenge.
-          </p>
+
 
           {/* Game Section */}
           <motion.div
